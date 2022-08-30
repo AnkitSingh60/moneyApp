@@ -1,11 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+import 'antd/dist/antd.css';
+import { Routes, Route,} from "react-router-dom";
+import Home from './components/Home';
+import Cart from './components/Cart';
+
 
 function App() {
   return (
-    <div className="App">
-      <h1>hey kiddo</h1>
-    </div>
+    <>
+    <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/cart" element={<Cart />} />
+    </Routes>
+    </>
   );
 }
 

@@ -121,7 +121,7 @@ export const products = [
     },
     {
         id: 11,
-        title: "perfume Oil",
+        title: "Perfume Oil",
         description: "Mega Discount, Impression of Acqua Di Gio by GiorgioArmani concentrated attar perfume Oil",
         price: 13,
         discountPercentage: 8.4,
@@ -241,7 +241,7 @@ export const products = [
     },
     {
         id: 21,
-        title: "- Daal Masoor 500 grams",
+        title: "Daal Masoor 500 grams",
         description: "Fine quality Branded Product Keep in a cool and dry place",
         price: 20,
         discountPercentage: 4.81,

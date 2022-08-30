@@ -1,152 +1,50 @@
-import React, { useState } from 'react'
+import React, {  useState } from 'react'
+import { useDispatch } from 'react-redux';
 import { products } from "../data"
-import { Card } from 'antd';
+import { Button, Card } from 'antd';
+import Navbar from './Navbar';
+import {add} from "../reduxToolkit/cartSlice"
+
+
 
 
 
 const Home = () => {
     const [data, setData] = useState(products)
-    // console.log('data:', data)
+
     const { Meta } = Card;
 
+    const dispatch = useDispatch()
+
+
+
+    const buyItem = (item) => {
+        dispatch(add(item))
+    // console.log('item:', item)
+    
+    }
+
     return (
-        <div className='productContainer'>
-            <Card
-                hoverable
-                style={{
-                    width: 240,
-                }}
-                cover={<img alt="example" src="https://i.pinimg.com/736x/fe/ee/0a/feee0aaca047b190f16aac7abdb03ca9.jpg" />}
-            >
-                <Meta title="Europe Street beat" description="www.instagram.com" />
-            </Card>
-            <Card
-                hoverable
-                style={{
-                    width: 240,
-                }}
-                cover={<img alt="example" src="https://i.pinimg.com/736x/fe/ee/0a/feee0aaca047b190f16aac7abdb03ca9.jpg" />}
-            >
-                <Meta title="Europe Street beat" description="www.instagram.com" />
-            </Card>
-            <Card
-                hoverable
-                style={{
-                    width: 240,
-                }}
-                cover={<img alt="example" src="https://i.pinimg.com/736x/fe/ee/0a/feee0aaca047b190f16aac7abdb03ca9.jpg" />}
-            >
-                <Meta title="Europe Street beat" description="www.instagram.com" />
-            </Card>
-            <Card
-                hoverable
-                style={{
-                    width: 240,
-                }}
-                cover={<img alt="example" src="https://i.pinimg.com/736x/fe/ee/0a/feee0aaca047b190f16aac7abdb03ca9.jpg" />}
-            >
-                <Meta title="Europe Street beat" description="www.instagram.com" />
-            </Card>
-            <Card
-                hoverable
-                style={{
-                    width: 240,
-                }}
-                cover={<img alt="example" src="https://i.pinimg.com/736x/fe/ee/0a/feee0aaca047b190f16aac7abdb03ca9.jpg" />}
-            >
-                <Meta title="Europe Street beat" description="www.instagram.com" />
-            </Card>
-            <Card
-                hoverable
-                style={{
-                    width: 240,
-                }}
-                cover={<img alt="example" src="https://i.pinimg.com/736x/fe/ee/0a/feee0aaca047b190f16aac7abdb03ca9.jpg" />}
-            >
-                <Meta title="Europe Street beat" description="www.instagram.com" />
-            </Card>
-            <Card
-                hoverable
-                style={{
-                    width: 240,
-                }}
-                cover={<img alt="example" src="https://i.pinimg.com/736x/fe/ee/0a/feee0aaca047b190f16aac7abdb03ca9.jpg" />}
-            >
-                <Meta title="Europe Street beat" description="www.instagram.com" />
-            </Card>
-            <Card
-                hoverable
-                style={{
-                    width: 240,
-                }}
-                cover={<img alt="example" src="https://i.pinimg.com/736x/fe/ee/0a/feee0aaca047b190f16aac7abdb03ca9.jpg" />}
-            >
-                <Meta title="Europe Street beat" description="www.instagram.com" />
-            </Card>
-            <Card
-                hoverable
-                style={{
-                    width: 240,
-                }}
-                cover={<img alt="example" src="https://i.pinimg.com/736x/fe/ee/0a/feee0aaca047b190f16aac7abdb03ca9.jpg" />}
-            >
-                <Meta title="Europe Street beat" description="www.instagram.com" />
-            </Card>
-            <Card
-                hoverable
-                style={{
-                    width: 240,
-                }}
-                cover={<img alt="example" src="https://i.pinimg.com/736x/fe/ee/0a/feee0aaca047b190f16aac7abdb03ca9.jpg" />}
-            >
-                <Meta title="Europe Street beat" description="www.instagram.com" />
-            </Card>
-            <Card
-                hoverable
-                style={{
-                    width: 240,
-                }}
-                cover={<img alt="example" src="https://i.pinimg.com/736x/fe/ee/0a/feee0aaca047b190f16aac7abdb03ca9.jpg" />}
-            >
-                <Meta title="Europe Street beat" description="www.instagram.com" />
-            </Card>
-            <Card
-                hoverable
-                style={{
-                    width: 240,
-                }}
-                cover={<img alt="example" src="https://i.pinimg.com/736x/fe/ee/0a/feee0aaca047b190f16aac7abdb03ca9.jpg" />}
-            >
-                <Meta title="Europe Street beat" description="www.instagram.com" />
-            </Card>
-            <Card
-                hoverable
-                style={{
-                    width: 240,
-                }}
-                cover={<img alt="example" src="https://i.pinimg.com/736x/fe/ee/0a/feee0aaca047b190f16aac7abdb03ca9.jpg" />}
-            >
-                <Meta title="Europe Street beat" description="www.instagram.com" />
-            </Card>
-            <Card
-                hoverable
-                style={{
-                    width: 240,
-                }}
-                cover={<img alt="example" src="https://i.pinimg.com/736x/fe/ee/0a/feee0aaca047b190f16aac7abdb03ca9.jpg" />}
-            >
-                <Meta title="Europe Street beat" description="www.instagram.com" />
-            </Card>
-            <Card
-                hoverable
-                style={{
-                    width: 240,
-                }}
-                cover={<img alt="example" src="https://i.pinimg.com/736x/fe/ee/0a/feee0aaca047b190f16aac7abdb03ca9.jpg" />}
-            >
-                <Meta title="Europe Street beat" description="www.instagram.com" />
-            </Card>
-        </div>
+        <>
+            <Navbar />
+            <div className='productContainer'>
+                {data.map((item, index) => {
+                    return (
+                        <>
+                            <Card className="item" key={item.id}
+                                hoverable
+                                cover={<img className='image' alt="example" src={item.image} />}
+                            >
+                                <Meta className="title" title={item.title.slice(0, 14) + "..."} />
+                                <Button style={{
+                                    width: 240, margin: "auto"
+                                }} type="primary" className='btn' onClick={()=>buyItem(item)}>Buy</Button>
+                            </Card>
+                        </>
+                    )
+                })}
+            </div>
+        </>
     )
 }
 
